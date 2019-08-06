@@ -1,0 +1,1759 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<ctype.h>
+#include<string.h>
+#include<process.h>
+#include<stdio.h>
+#include<fstream.h>
+#include<dos.h>
+#include<stdlib.h>
+class staff
+{  char name[12];
+   char gender[6];
+   char dob[10];
+   char add[10];
+   char doj[10];
+   char qual[10];
+   char dep[10];
+   char title[10];
+   float basic;
+   char nalandaid[10];
+   double contact;
+
+public:
+void name1()
+{ cout<<"Enter the new name \n";
+gets(name);
+}
+void add1()
+{cout<<"Enter the new address \n";
+gets(add);
+}
+void qual1()
+{cout<<"Enter the new qualification \n";
+gets(qual);
+}
+void dep1()
+{ cout<<"Enter the new department \n";
+gets(dep);
+}
+
+void basic1()
+{cout<<"Enter the new basic pay \n";
+cin>>basic;
+}
+
+void contact1()
+{
+ cout<<"Enter the new contact number \n";
+ cin>>contact;
+ }
+
+char* NALANDAID1()
+  {
+     return nalandaid;
+  }
+char* NAME1()
+   {  return name;
+   }
+    void acceeept()
+ { gets(name);
+   gets(nalandaid);
+   gets(gender);
+   gets(dob);
+   gets(add);
+   cin>>contact;
+   gets(doj);
+   gets(qual);
+   gets(dep);
+   gets(title);
+   cin>>basic;
+
+ } //end of acceeept
+ void title1()
+ { cout<<"Enter the new title \n";
+   gets(title);
+ } //end of titlee
+    void depart()
+    {cout<<"Enter the department ";
+    gets(dep);
+    }
+    void sam()
+   {char *toy;
+     int n;
+    cout<<"Enter the number of records \n";
+    gets(toy);
+    n=atoi(toy);
+    clrscr();
+    cout<<"Enter \n 1. Name \n 2. Nalandaid \n 3. Gender \n 4. Date of birth \n 5. Address \n 6. Contact number \n 7. Date of joining \n 8. Qualification \n 9. Department \n 10. Jobtitle \n 11. Basic pay of the staff members one by one \n";
+    ofstream f5;ifstream f15;
+    f5.open("krishna.txt",ios::out|ios::app);
+  for(int i=1;i<=n;i++)
+  {
+   s.acceeept();
+   f5.write( (char*)&s,sizeof(s));
+
+  }
+  f5.close();
+  f15.open("krishna.txt",ios::in);
+       while(!f15.eof())
+     {f15.read((char*)&s,sizeof(staff));
+      }
+
+ } //end of function "Sam"
+}s; //end of class  staff
+ class student
+{ int registrationno;
+  char DOA[10];
+  int ROLLNO;
+  char NAME[20];
+  char GENDER[6];
+  char DOB[20];
+  char ADDRESS[50];
+  double PHONENO;
+  int CLASS;
+  char section;
+  int marks;
+  public:
+  int regno()
+  { return registrationno;
+  }
+  void datesort()
+  { clrscr();
+    fstream f123;
+    int flag=0;
+    char doj[10];
+    cout<<"Enter the date of admission of the candidate \n";
+    gets(doj);
+    f123.open("kanna.txt",ios::in|ios::binary);
+    f123.seekg(0);
+    while(f123.read((char *)&a,sizeof(a)))
+  {
+     if(strcmpi(a.DOA,doj)==0)
+    { flag=1;
+     a.display();
+     break;
+    }
+
+  }
+   f123.close();
+    if(flag==0)
+    cout<<" Sorry there is no such student \n";
+
+ }
+
+  int type_validate(char t[])
+   {
+    int flag=1;
+    for(int i=0;i<strlen(t);i++)
+     {
+      if(!isdigit(t[i]))
+       {
+	flag=0;
+       }
+     }
+    return flag;
+  }
+
+  void accept()
+  {    char t[20];
+       int flag;
+       cin>>registrationno;
+       gets(DOA);
+       cin>>ROLLNO;
+       gets(NAME);
+       gets(GENDER);
+       gets(DOB);
+       gets(ADDRESS);
+       a:
+       gets(t);
+       flag=type_validate(t);
+       if(flag==0)
+	{
+	 cout<<"\n\nError! Invalid data type! Enter again\n\n";
+	 goto a;
+	}
+       else
+	{
+	 PHONENO=atoi(t);
+	}
+       cin>>CLASS;
+       cin>>section;
+       cin>>marks;
+   }
+
+  void ADDRESS1()
+  {cout<<"Enter the new address \n";
+   gets(ADDRESS);
+  }
+  void PHONENO1()
+  {cout<<" Enter the new phone number \n";
+   cin>>PHONENO;
+  }
+  void CLASS1()
+  {cout<<"Enter the class of the student \n";
+   cin>>CLASS;
+  }
+  void SECTION1()
+  { cout<<"Enter the new section \n";
+    cin>>section;
+  }
+
+  int roll1()
+  {
+       return ROLLNO;
+   }
+
+char* NAME4()
+   {  return NAME;
+   }
+ int CLASS2()
+{ return CLASS;
+}
+void input()
+{
+     fstream f101;
+     int i,flag=0;
+     f101.open("kanna.txt",ios::in|ios::binary);
+    while(! f101.eof())
+  {  f101.read( (char*)&a,sizeof(a));
+     if(a.marks<50)
+    { flag=1;
+     a.display1();
+     break;
+    }
+
+  }
+    if(flag==0)
+    cout<<" Sorry there is no such student with marks less than 50 \n";
+}
+ void throughput()
+ {  fstream f100;
+    int i,flag=0;
+    f100.open("kanna.txt",ios::in|ios::binary);
+    f100.seekg(0);
+    while(f100.read((char *)&a,sizeof(a)))
+  {
+     if(a.marks>50)
+    { flag=1;
+     a.display2();
+     break;
+    }
+
+  }
+    if(flag==0)
+    cout<<" Sorry there is no such student with marks more than 50 \n";
+}
+
+
+ void output()
+ {
+ fstream f99;
+    int i,flag=0;
+    cout<<"Enter the class in which the student is studying \n";
+    cin>>i;
+    f99.open("kanna.txt",ios::in|ios::binary);
+
+   while(! f99.eof())
+  {  f99.read( (char*)&a,sizeof(a));
+     if(a.CLASS==i)
+    { flag=1;
+     a.display();
+     break;
+    }
+
+  }
+    if(flag==0)
+    cout<<" Sorry there is no such student \n";
+
+ }
+   void display()
+ { cout<<" The registration number is : "<<registrationno<<endl;
+   cout<<" The date of admission /joining is : "<<DOA<<endl;
+   cout<<" The roll number is : "<<ROLLNO<<endl;
+   cout<<" The name is : "<<NAME<<endl;
+   cout<<" The gender is : "<<GENDER<<endl;
+   cout<<" The date of birth is : "<<DOB<<endl;
+   cout<<" The address is :"<<ADDRESS<<endl;
+   cout<<" The phone number is:"<<PHONENO<<endl;
+   cout<<" The class is: "<<CLASS<<endl;
+   cout<<" The section is:"<<section<<endl;
+   }
+   void display1()
+{  cout<<" The Marks Of The Students Who Have Got Less Than 50 \n";
+   cout<<" The registration number is : "<<registrationno<<endl;
+   cout<<" The date of admission is : "<<DOA<<endl;
+   cout<<" The roll number is : "<<ROLLNO<<endl;
+   cout<<" The name is : "<<NAME<<endl;
+   cout<<" The gender is : "<<GENDER<<endl;
+   cout<<" The date of birth is : "<<DOB<<endl;
+   cout<<" The address is :"<<ADDRESS<<endl;
+   cout<<" The phone number is:"<<PHONENO<<endl;
+   cout<<" The class is: "<<CLASS<<endl;
+   cout<<" The section is:"<<section<<endl;
+   cout<<" The mark is :  "<<marks<<endl;
+   }
+   void display2()
+   { cout<<" The Marks Of The Students Who Have Got More Than 50 \n";
+   cout<<" The registration number is : "<<registrationno<<endl;
+   cout<<" The date of admission is : "<<DOA<<endl;
+   cout<< "The roll number is : "<<ROLLNO<<endl;
+   cout<<" The name is : "<<NAME<<endl;
+   cout<<" The gender is : "<<GENDER<<endl;
+   cout<<" The date of birth is : "<<DOB<<endl;
+   cout<<" The address is :"<<ADDRESS<<endl;
+   cout<<" The phone number is:"<<PHONENO<<endl;
+   cout<<" The class is: "<<CLASS<<endl;
+   cout<<" The section is:"<<section<<endl;
+   cout<<" The mark is :  "<<marks<<endl;
+   }
+
+     void mas()
+
+{  int n;
+   cout<<"Enter the number of records \n";
+   cin>>n;
+   cout<<"Enter \n 1. The registration number \n 2. Date of joining \n 3. Rollno \n 4.Name \n 5. Gender \n 6. Date of birth \n 7. Address \n 8. Phone number \n 9. Class \n 10. Section \n 11. Marks \n  of the students one by one \n";
+   ofstream f21;ifstream f20;
+   f21.open("kanna.txt",ios::out|ios::app);
+   for(int i=1;i<=n;i++)
+  {
+   a.accept();
+   f21.write( (char*)&a,sizeof(a));
+
+  }
+  f21.close();
+  f20.open("kanna.txt",ios::in);
+       while(!f20.eof())
+     {f20.read((char*)&a,sizeof(a));
+     }
+  f20.close();
+
+ } //end of function mas
+}a;//end of class student
+class studentresult
+{
+  int registrationno;
+  char sub[10];
+  int marks;
+  int passmark;
+  int maximummark;
+  char result[5];
+  public:
+  void grahanam()
+  {
+    cin>>registrationno;
+    gets(sub);
+    cin>>marks;
+    cin>>passmark;
+    cin>>maximummark;
+    gets(result);
+
+  }
+  int regno()
+  { return registrationno;
+  }
+  char* subject1()
+ { return sub;
+ }
+
+  void regno1()
+ {cin>>registrationno;
+ }
+ void subject()
+ { gets(sub);
+ }
+ void mark()
+ {cin>>marks;
+ }
+ int mark1()
+ { return marks;
+ }
+ void pass()
+ { cin>>passmark;
+ }
+ void maxmark()
+ { cin>>maximummark;
+ }
+ void result1()
+ { cin>>result;
+ }
+
+}b;  //end of studentregister
+ int wordpass()
+
+{clrscr();
+char id[10];
+char pass[10];
+int i=1;
+  char passwordy[]={"wordpass"};
+l:  cout<<" Access given to  administrators and teachers \n";
+  cout<<" Login through either your user id or administrator id \n";
+ cout<<"\n\n Please enter your user name:";
+ gets(id); clrscr();
+ cout<<"\nPassword(Max. 10 characters):";
+ for(int k=0;k<10;k++)
+ {pass[k]=getch();
+  if(pass[k]==char(13) )
+ {pass[k]='\0';break;}
+   cout<<"*";
+ if(pass[k]==char(8))
+ {clrscr(); cout<<"\nPassword(Max. 10 characters):";
+ pass[k-1]=' ';
+ for(int j=0;j<k-1;j++)
+ {cout<<"*";}
+ k=k-2; }
+ }
+ if(strcmp(pass,passwordy)==0)
+  {cout<<endl<<" Access granted  \n";
+   return 1;
+   }
+else
+{
+while(i!=4)
+  {  i++;
+     cout<<endl<<" Access denied \n";
+     clrscr();
+     cout<<" please enter a new password \n";
+     goto l;
+
+  }
+}
+return 0;
+}
+
+ int password()
+
+{ char id[10];
+int i=1;
+char pass[10];
+  char passwordy[]={"password"};
+l:  cout<<" Access given to only administrators \n";
+ cout<<"\n\n Please enter your user name:";
+ gets(id); clrscr();
+ cout<<"\nPassword(Max. 10 characters):";
+ for(int k=0;k<10;k++)
+ {pass[k]=getch();
+  if(pass[k]==char(13) )
+ {pass[k]='\0';break;}
+   cout<<"*";
+ if(pass[k]==char(8))
+ {clrscr(); cout<<"\nPassword(Max. 10 characters):";
+ pass[k-1]=' ';
+ for(int j=0;j<k-1;j++)
+ {cout<<"*";}
+ k=k-2; }
+ }
+if(strcmp(pass,passwordy)==0)
+  {cout<<endl<<" Access granted  \n";
+   return 1;
+   }
+else
+{
+while(i!=4)
+  {  i++;
+     cout<<endl<<" Access denied \n";
+     clrscr();
+     cout<<" please enter a new password \n";
+     goto l;
+
+  }
+}
+return 0;
+}
+
+
+
+
+
+int num;//num is the number of records of the students that are in the database
+int n; // n is the number of records of the students to be stored in the database
+void main()
+{
+    clrscr();
+    cout<<" Hi friends i am  Mr. Genius please adhere strictly to the option names to perform the desired operations since the letters are very (case) sensitive   \n";
+    for(int i=0;i<80;i++)
+    cout<<"*";
+    cout<<"\t\t\t EFG SCHOOL MANAGEMENT SYSTEM\n\n";
+    for(int j=0;j<80;j++)
+    cout<<"*";
+    cout<<" \t\t      |-------------|\n";
+    cout<<" \t\t      | TCS PROJECT |\n";
+    cout<<" \t\t      |    BY       |\n";
+    cout<<" \t\t      | EPSILON 5   |\n";
+    cout<<" \t\t      |             |\n";
+    cout<<" \t\t      |             |\n";
+    cout<<" \t\t      |-------------|\n";
+     cout<<" \t\t    /T.S. Sridharan/\n";
+    
+int choice;
+delay(10000);
+clrscr();
+f:cout<<"                  Enter     "<<endl<<"  0. For accepting details of all the teachers"<<endl<<"  1. Staff register"<<endl<<"  2. Student register "<<endl<<"  3. Student report register"<<endl<<"  5. To enter the details of all students  "<<endl<<"  6. For accepting the data to be printed in the report card "<<endl<<"  9. Report generation "<<endl<<"  Any other key to exit \n";
+cin>>choice;
+switch(choice)
+{
+
+   case 6:
+
+  { int p;
+    p=wordpass();
+    if(p==1)
+  {  clrscr();
+    int n,num;
+    cout<<"Enter the number of records \n";
+    cin>>n;
+    cout<<" 1. Enter the registration no \n 2. Subject \n 3. Marks \n 4. Pass mark \n 5. Maximum mark \n 6. The result one by one \n";
+    ofstream f60;ifstream f61;
+    f60.open("report.txt",ios::out|ios::app);
+    for(int i=1;i<=n;i++)
+    { b.grahanam();
+      f60.write( (char*)&b,sizeof(b));
+    }
+    f60.close();
+    f61.open("report.txt",ios::in);
+    while(!f61.eof())
+   {
+    f61.read((char*)&b,sizeof(b));
+   }
+    f61.close();
+    clrscr();
+    cout<<" Press "<<endl<<" 1. To go back to the foremost menu "<<endl<<" Any other key to exit \n";
+    cin>>num;
+    if(num==1)
+    { clrscr();
+     goto f;
+
+    }
+    else
+    break;
+  }//end of if
+  else
+  cout<<" Sorry again later \n";
+  break;
+ }//end of case 6
+
+
+
+  case  0:
+{  int c;
+   clrscr();
+   c=password();
+   delay(5000);
+   if(c==1)
+ {
+   int num;
+
+   clrscr();
+   s.sam();
+   clrscr();
+   cout<<" Press "<<endl<<" 1. To go back to the foremost menu "<<endl<<" Any other key to exit \n";
+   cin>>num;;
+    if(num==1)
+    { clrscr();
+     goto f;
+
+    }
+    else
+
+  break;
+ }//for if
+ else
+ cout<<" Sorry try again later \n";
+ break;
+}
+  case  5:
+{ clrscr();
+  int q;
+  q=wordpass();
+  if(q==1)
+   { clrscr();
+    a.mas();
+    clrscr();
+    int num;
+     cout<<" Press "<<endl<<" 1. To go back to the foremost menu "<<endl<<" Any other key to exit \n";
+   cin>>num;;
+    if(num==1)
+    { clrscr();
+     goto f;
+
+    }
+    else
+
+    break;
+  }//end of if
+  else
+  cout<<"Sorry try again later \n";
+  break;
+}
+
+  case 3:
+ {   int q;
+  q=wordpass();
+  if(q==1)
+
+  {   clrscr();
+     char choice;
+   l: cout<<"Enter"<<endl<<" a. To modify the details of the student "<<endl<<" b. To search based on the registration number "<<endl<<" c. To search based on the name of the subject"<<endl;
+     cout<<"Enter the choice\n";
+     cin>>choice;
+     switch(choice)
+ {
+    case 'a':
+   { clrscr();
+     int choice;
+    m: cout<<" Press "<<endl<<" 1.Registration number "<<endl<<" 2.Subject name"<<endl<<" 3. Marks obtained "<<endl<<" 4. Pass mark "<<endl<<" 5. Maximum mark"<<endl<<"6.Result"<<endl;
+     cout<<"Enter the choice of the data you want to modify \n";
+     cin>>choice;
+     switch(choice)
+{
+     case 1:
+    { clrscr();
+      int num;
+      int rol;
+      fstream f62,f63;
+      int nid,pos;
+      f62.open("report.txt",ios::in);
+      f63.open("report1.txt",ios::app);
+      cout<<"Enter the registration number of the record to be modified\n";
+      cin>>rol;
+      cout<<" Enter the new registration number \n";
+   while(f62.read((char*)&b,sizeof(b)))
+   {
+	if(b.regno()==rol)
+     {
+      b.regno1();
+      }
+     f63.write((char*)&b,sizeof(b));
+    } //end of while
+  f62.close();
+  f63.close();
+  remove("report.txt");
+  rename("report1.txt","report.txt");
+   cout<<" Press "<<endl<<" 1. To go back to the foremost menu "<<endl<<" 2. To go back to the menu that enables you to perform operations like searching and modifications of the student details "<<endl<<" 3. To go back to the menu that requests you to enter new modified details "<<endl<<" Any other key to exit \n";
+   cin>>num;
+    if(num==1)
+    { clrscr();
+      goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto l;
+    }
+    else
+    if(num==3)
+    {
+    clrscr();
+    goto m;
+    }
+    else
+    break;
+
+ }//end of case 1
+    case 2:
+ {    clrscr();
+       int num;
+      int rol;
+      fstream f64,f65;
+      f64.open("report.txt",ios::in);
+      f65.open("report1.txt",ios::app);
+      cout<<"Enter the registration number of the record to be modified\n";
+      cin>>rol;
+      cout<<" Enter the new subject \n";
+   while(f64.read((char*)&b,sizeof(b)))
+  {
+   if(b.regno()==rol)
+   {
+      b.subject();
+   }
+     f65.write((char*)&b,sizeof(b));
+  }
+  f64.close();
+  f65.close();
+  remove("report.txt");
+  rename("report1.txt","report.txt");
+  cout<<" Press "<<endl<<" 1. To go back to the foremost menu "<<endl<<" 2. To go back to the menu that enables you to perform operations like searching and modifications of the student details "<<endl<<" 3. To go back to the menu that requests you to enter new modified details "<<endl<<" Any other key to exit \n";
+   cin>>num;
+    if(num==1)
+    { clrscr();
+      goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto l;
+    }
+    else
+    if(num==3)
+    {
+    clrscr();
+    goto m;
+    }
+    else
+    break;
+
+   }//end of case 2
+
+   case 3:
+   {  clrscr();
+      int rol;
+      int num;
+      fstream f66,f67;
+      f66.open("report.txt",ios::in);
+      f67.open("report1.txt",ios::app);
+      cout<<"enter the registration number of the record to be modified\n";
+      cin>>rol;
+      cout<<" enter the new mark \n";
+   while(f66.read((char*)&b,sizeof(b)))
+  {
+   if(b.regno()==rol)
+   {
+      b.mark1();
+   }
+     f67.write((char*)&b,sizeof(b));
+  }
+  f66.close();
+  f67.close();
+  remove("report.txt");
+  rename("report1.txt","report.txt");
+  cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that enables you to perform operations like searching and modifications of the student details "<<endl<<" 3. to go back to the menu that requests you to enter new modified details "<<" Any other key to exit \n";
+   cin>>num;;
+    if(num==1)
+    { clrscr();
+      goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto l;
+    }
+    else
+    if(num==3)
+    {
+    clrscr();
+    goto m;
+    }
+    else
+    break;
+
+  }//end of case 3
+  case 4:
+    {  clrscr();
+      int num;
+      int rol;
+      fstream f68,f69;
+      f68.open("report.txt",ios::in);
+      f69.open("report1.txt",ios::app);
+      cout<<"enter the registration number of the record to be modified\n";
+      cin>>rol;
+      cout<<" enter the new pass mark \n";
+   while(f68.read((char*)&b,sizeof(b)))
+  {
+   if(b.regno()==rol)
+   {
+      b.pass();
+   }
+     f69.write((char*)&b,sizeof(b));
+  }
+  f68.close();
+  f69.close();
+  remove("report.txt");
+  rename("report1.txt","report.txt");
+  cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that enables you to perform operations like searching and modifications of the student details "<<endl<<" 3. to go back to the menu that requests you to enter new modified details "<<" Any other key to exit \n";
+   cin>>num;;
+    if(num==1)
+    { clrscr();
+      goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto l;
+    }
+    else
+    if(num==3)
+    {
+    clrscr();
+    goto m;
+    }
+    else
+
+  break;
+  }//end of case 4
+  case 5:
+ {    clrscr();
+      int rol;
+      int num;
+      fstream f70,f71;
+      f70.open("report.txt",ios::in);
+      f71.open("report1.txt",ios::app);
+      cout<<"enter the registration number of the record to be modified\n";
+      cin>>rol;
+      cout<<" enter the maximum mark \n";
+
+   while(f70.read((char*)&b,sizeof(b)))
+  {
+   if(b.regno()==rol)
+   {
+      b.maxmark();
+   }
+     f71.write((char*)&b,sizeof(b));
+  }
+  f70.close();
+  f71.close();
+  remove("report.txt");
+  rename("report1.txt","report.txt");
+  cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that enables you to perform operations like searching and modifications of the student details "<<endl<<" 3. to go back to the menu that requests you to enter new modified details "<<" Any other key to exit \n";
+   cin>>num;;
+    if(num==1)
+    { clrscr();
+      goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto l;
+    }
+    else
+    if(num==3)
+    {
+    clrscr();
+    goto m;
+    }
+    else
+    break;
+
+  }//end of case 5
+  case 6:
+ {    clrscr();
+      int rol;
+      int num;
+      fstream f72,f73;
+      f72.open("report.txt",ios::in);
+      f73.open("report1.txt",ios::app);
+      cout<<"enter the registration number of the record to be modified\n";
+      cin>>rol;
+      cout<<" enter the new result \n";
+   while(f72.read((char*)&b,sizeof(b)))
+  {
+   if(b.regno()==rol)
+   {
+      b.result1();
+   }
+     f73.write((char*)&b,sizeof(b));
+  }
+  f72.close();
+  f73.close();
+  remove("report.txt");
+  rename("report1.txt","report.txt");
+  cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that enables you to perform operations like searching and modifications of the student details "<<endl<<" 3. to go back to the menu that requests you to enter new modified details "<<" Any other key to exit \n";
+   cin>>num;;
+    if(num==1)
+    { clrscr();
+      goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto l;
+    }
+    else
+    if(num==3)
+    {
+    clrscr();
+    goto m;
+    }
+    else
+    break;
+
+} //end of case 6
+}//end of kutti kutti switch
+break;
+}//end of case 'a'
+
+
+
+
+    case 'b':
+   { clrscr();
+     int num;
+     int flag=0;
+     ifstream f25;
+     int regisno;
+     cout<<"enter the registration number to be compared with the rest of the registration number \n";
+     cin>>regisno;
+     f25.open("report.txt",ios::out|ios::app);
+     while(!f25.eof())
+    { f25.read( (char*)&a,sizeof(a));
+    if(a.regno()==regisno)
+    { cout<<"element found \n";
+      flag=1;
+      delay(3000);
+    }
+    }
+    if(flag==0)
+   { cout<<"element not found \n";
+     delay(3000);
+   }
+    f25.close();
+    cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that requests you to enter new modified details "<<endl<<" 3. to go back to the menu that lets you perform operations like searching "<<endl<< " Any other key to exit \n";
+   cin>>num;;
+    if(num==1)
+    { clrscr();
+      goto f;
+
+    }
+    else
+    if(num==2)
+    {
+    clrscr();
+    goto m;
+    }
+    else
+    if(num==3)
+    {
+    clrscr();
+    goto l;
+    }
+    break;
+
+   }//end of case b
+   case 'c':
+   { clrscr();
+   int flag=0;
+     ifstream f28;
+     char subb[10];
+     cout<<"enter the subject to be compared with all the other names \n";     gets(subb);
+       f28.open("report.txt",ios::out|ios::app);
+     while(!f28.eof())
+    { f28.read( (char*)&b,sizeof(b));
+    if(strcmp(b.subject1(),subb)==0)
+    { cout<<"element found \n";
+      flag=1;
+      delay(3000);
+    }
+    }
+    if(flag==0)
+   { cout<<"element not found \n";
+     delay(3000);
+   }
+   f28.close();
+
+   cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that requests you to enter new modified details "<<endl<<" 3. to go back to the menu that lets you perform operations like searching "<<endl<< " Any other key to exit \n";
+   cin>>num;;
+    if(num==1)
+    { clrscr();
+      goto f;
+
+    }
+    else
+    if(num==2)
+    {
+    clrscr();
+    goto m;
+    }
+    else
+    if(num==3)
+    {
+    clrscr();
+    goto l;
+    }
+    break;
+
+   }//end of case c
+  }//end of kutti switch
+  break;
+  }//end of if
+  else
+  cout<<"try again later \n";
+  break;
+ }//end of case 3
+
+
+
+  case 1:
+   {  clrscr();
+      char ch;
+      int p;
+      p=password();
+      if(p==1)
+    {
+  x:    cout<<"press "<<endl<<"A. to search for nalandaid"<<endl<<"B. to search name "<<endl<<"C. to modify the details of the staff "<<endl<<"D. to add a new title "<<endl<<"E. to accept the department "<<endl<<" Any other key to exit \n";
+	cin>>ch;
+	switch(ch)
+
+     {
+       case 'A':
+   {  clrscr();
+       char nid[10];
+       int n,f=0;
+       ifstream f11;
+       cout<<"enter the nalanda id \n";
+       cin>>nid;
+       f11.open("krishna.txt",ios::in);
+       while(!f11.eof())
+     {f11.read((char*)&s,sizeof(staff));
+      if(strcmp(s.NALANDAID1(),nid)==0)
+       { f=1;
+       cout<<"ELEMENT FOUND\n";
+       delay(3000);
+       break;
+       }
+    }
+     if(f==0)
+     { cout<<"ELEMENT NOT FOUND\n";
+       delay(3000);
+     }
+     f11.close();
+       clrscr();
+      int num;
+      cout<<"Press"<<endl<<" 1. to go back to foremost menu "<<endl<<" 2. to go back to the main menu "<<endl<<" Any other key to exit \n";
+       cin>>num;
+       if(num==1)
+       {clrscr();
+       goto f;
+       }
+       else
+       if(num==2)
+       {clrscr();
+	goto x;
+	}
+	else
+
+     break;
+} //end of case A
+   case 'B':
+{    clrscr();
+     int flag=1;
+     char nam[100];
+     cout<<"enter the name of the teacher \n";
+     gets(nam);
+     ofstream f2;ifstream f12;
+     f12.open("krishna.txt",ios::in);
+     while(!f12.eof())
+  {   f12.read((char*)&s,sizeof(staff));
+      if(strcmp(s.NAME1(),nam)==0)
+    { cout<<"name found \n";
+      delay(4000);
+      flag=0;
+      break;
+
+     }
+   }
+   if(flag==1)
+  { cout<<"name not found \n";
+   delay(3000);
+  }
+     f12.close();
+     clrscr();
+     int num;
+     cout<<"Press"<<endl<<" 1. to go back to foremost menu "<<endl<<" 2. to go back to the main menu "<<endl<<" Any other key to exit \n";
+     cin>>num;
+      if(num==1)
+       {clrscr();
+       goto f;
+       }
+       else
+       if(num==2)
+       {clrscr();
+	goto x;
+	}
+	else
+
+   break;
+}  //end of case B
+     case 'C':
+  { clrscr();
+  char choice;
+  y: cout<<"ENTER the desired choice to modify the details"<<endl<<"1. Name 2. Address 3. Qualification  4. basic  5.contact \n";
+   cout<<"enter the choice \n";
+   cin>>choice;
+   switch(choice)
+ {
+   case '1':
+  { clrscr();
+   fstream f80,f81;
+   char nid[10];
+   f80.open("krishna.txt",ios::in);
+   f81.open("krishna1.txt",ios::app);
+   cout<<"enter the nalanda id of the record to be modified\n";
+   cin>>nid;
+   while(f80.read((char*)&s,sizeof(s)))
+  {
+   if(strcmp(s.NALANDAID1(),nid)==0)
+   {
+      s.name1();
+   }
+     f81.write((char*)&s,sizeof(s));
+  }
+   f80.close();
+   f81.close();
+   remove("krishna.txt");
+   rename("krishna1.txt","krishna.txt");
+
+       clrscr();
+      int num;
+      cout<<"Press"<<endl<<" 1. to go back to foremost menu "<<endl<<" 2. to go back to the main menu "<<endl<<" 3. to go back to the previous menu "<<endl<<" Any other key to exit \n";
+       cin>>num;
+       if(num==1)
+       {clrscr();
+       goto f;
+       }
+       else
+       if(num==2)
+       {clrscr();
+	goto x;
+	}
+       else
+	if(num==3)
+       {clrscr();
+	goto y;
+	}
+	else
+	{
+	exit(0);
+       }
+   break;
+  }//end of case 1
+  case '2':
+{  clrscr();
+   fstream f82,f83;
+    char nid[10];
+   f82.open("krishna.txt",ios::in);
+   f83.open("krishna1.txt",ios::app);
+   cout<<"enter the nalanda id of the record to be modified\n";
+   cin>>nid;
+   while(f82.read((char*)&s,sizeof(s)))
+  {
+   if(strcmp(s.NALANDAID1(),nid)==0)
+   {
+      s.add1();
+   }
+     f83.write((char*)&s,sizeof(s));
+  }
+   f82.close();
+   f83.close();
+   remove("krishna.txt");
+   rename("krishna1.txt","krishna.txt");
+   clrscr();
+      int num;
+      cout<<"Press"<<endl<<" 1. to go back to foremost menu "<<endl<<" 2. to go back to the main menu "<<endl<<" 3. to go back to the previous menu "<<endl<<" Any other key to exit \n";
+       cin>>num;
+       if(num==1)
+       {clrscr();
+       goto f;
+       }
+       else
+       if(num==2)
+       {clrscr();
+	goto x;
+	}
+       else
+	if(num==3)
+       {clrscr();
+	goto y;
+	}
+	else
+   break;
+  } //end of case 2
+  case '3':
+   { clrscr();
+    fstream f84,f85;
+     char nid[10];
+   f84.open("krishna.txt",ios::in);
+   f85.open("krishna1.txt",ios::app);
+   cout<<"enter the nalanda id of the record to be modified\n";
+   cin>>nid;
+   while(f84.read((char*)&s,sizeof(s)))
+  {
+   if(strcmp(s.NALANDAID1(),nid)==0)
+   {
+      s.qual1();
+   }
+     f85.write((char*)&s,sizeof(s));
+  }
+   f84.close();
+   f85.close();
+   remove("krishna.txt");
+   rename("krishna1.txt","krishna.txt");
+    clrscr();
+      int num;
+      cout<<"Press"<<endl<<" 1. to go back to foremost menu "<<endl<<" 2. to go back to the main menu "<<endl<<" 3. to go back to the previous menu "<<endl<<" Any other key to exit \n";
+       cin>>num;
+       if(num==1)
+      { clrscr();
+	goto f;
+       }
+       else
+       if(num==2)
+       {clrscr();
+	goto x;
+	}
+       else
+	if(num==3)
+       {clrscr();
+	goto y;
+	}
+	else
+	break;
+
+  } //end of case 3
+  case '4':
+  { clrscr();
+   fstream f86,f87;
+     char nid[10];
+   f86.open("krishna.txt",ios::in);
+   f87.open("krishna1.txt",ios::app);
+   cout<<"enter the nalanda id of the record to be modified\n";
+   cin>>nid;
+   while(f86.read((char*)&s,sizeof(s)))
+  {
+   if(strcmp(s.NALANDAID1(),nid)==0)
+   {
+      s.basic1();
+   }
+     f87.write((char*)&s,sizeof(s));
+  }
+   f86.close();
+   f87.close();
+   remove("krishna.txt");
+   rename("krishna1.txt","krishna.txt");
+    clrscr();
+      int num;
+      cout<<"Press"<<endl<<" 1. to go back to foremost menu "<<endl<<" 2. to go back to the main menu "<<endl<<" 3. to go back to the previous menu "<<endl<<" Any other key to exit \n";
+       cin>>num;
+       if(num==1)
+       {clrscr();
+       goto f;
+       }
+       else
+       if(num==2)
+       {clrscr();
+	goto x;
+	}
+       else
+	if(num==3)
+       {clrscr();
+	goto y;
+	}
+	else
+
+   break;
+  } //end of case 4
+  case '5':
+  {clrscr();
+   char nid[10] ;
+   fstream f88,f89;
+   f88.open("krishna.txt",ios::in);
+   f89.open("krishna1.txt",ios::app);
+   cout<<"enter the nalanda id of the record to be modified\n";
+   cin>>nid;
+   while(f88.read((char*)&s,sizeof(s)))
+  {
+   if(strcmp(s.NALANDAID1(),nid)==0)
+   {
+      s.contact1();
+   }
+     f89.write((char*)&s,sizeof(s));
+  }
+   f88.close();
+   f89.close();
+   remove("krishna.txt");
+   rename("krishna1.txt","krishna.txt");
+    clrscr();
+      int num;
+      cout<<"Press"<<endl<<" 1. to go back to foremost menu "<<endl<<" 2. to go back to the main menu "<<endl<<" 3. to go back to the previous menu "<<endl<<" Any other key to exit \n";
+      cin>>num;
+       if(num==1)
+       {clrscr();
+       goto f;
+       }
+       else
+       if(num==2)
+       {clrscr();
+	goto x;
+	}
+       else
+	if(num==3)
+       {clrscr();
+	goto y;
+	}
+
+       else
+   break;
+   }//end of case 5
+  }//end of switch
+ }//end of case C
+
+
+    case 'D': //newtitle
+ { clrscr();
+   fstream f41,f42;
+   char nid[10];
+   int pos;
+   f41.open("krishna.txt",ios::in );
+   f42.open("krishna1.txt",ios::out|ios::app);
+   cout<<"enter the nalanda id of the record to be modified\n";
+   cin>>nid;
+   while(f41.read((char*)&s,sizeof(s)))
+  {
+   if(strcmp(s.NALANDAID1(),nid)==0)
+   {
+      s.title1();
+   }
+     f42.write((char*)&s,sizeof(s));
+  }
+   f41.close();
+   f42.close();
+   remove("krishna.txt");
+   rename("krishna1.txt","krishna.txt");
+    clrscr();
+      int num;
+      cout<<"Press"<<endl<<" 1. to go back to foremost menu "<<endl<<" 2. to go back to the main menu "<<endl<<" Any other key to exit \n";
+       cin>>num;
+       if(num==1)
+       {clrscr();
+       goto f;
+       }
+       else
+       if(num==2)
+       {clrscr();
+	goto x;
+	}
+	else
+
+
+   break;
+ }//end of case D
+     case 'E':
+  { clrscr();
+   fstream f7,f77;
+   char nid[10];
+   int pos;
+   f7.open("krishna.txt",ios::in );
+   f77.open("krishna1.txt",ios::app);
+   cout<<"enter the nalanda id of the record to be modified\n";
+   gets(nid);
+   while(f7.read((char*)&s,sizeof(s)))
+  {
+   if(strcmp(s.NALANDAID1(),nid)==0)
+   {
+      s.dep1();
+   }
+     f77.write((char*)&s,sizeof(s));
+  }
+  f7.close();
+  f77.close();
+  remove("krishna.txt");
+  rename("krishna1.txt","krishna.txt");
+   clrscr();
+      int num;
+      cout<<"Press"<<endl<<" 1. to go back to foremost menu "<<endl<<" 2. to go back to the main menu "<<endl<<" Any other key to exit \n";
+      cin>>num;
+
+       if(num==1)
+
+       {clrscr();
+       goto f;
+       }
+       else
+	if(num==2)
+
+       {clrscr();
+       goto x;
+       }
+       else
+
+  break;
+ }//end of case E
+
+ }//end of kutti switch
+} //end of if
+else
+cout<<" sorry  try again later \n";
+  break;
+
+ }  //end of case 1
+
+case 2:
+{
+int q;
+  q=wordpass();
+  if(q==1)
+{
+ clrscr();
+ char cho;
+ z: cout<<"enter "<<endl<<"x. to perform search based on roll number "<<endl<<"y. to perform search based on the name of the students "<<endl<<"z. to modify the details of the student record "<<endl<<" Any other key to exit \n";
+ cout<<"enter choice \n";
+ cin>>cho;
+switch(cho)
+{
+  case 'x':
+ {  clrscr();
+    int flag=0;
+    int rolll;
+    ofstream f8;ifstream f18;
+    cout<<"enter the roll number to be compared with the others \n";
+    cin>>rolll;
+    f18.open("kanna.txt",ios::in);
+     while(!f18.eof())
+     {f18.read((char*)&a,sizeof(student));
+      if(a.roll1()==rolll)
+      { cout<<"roll number found \n";
+	flag=1;
+	delay(4000);
+	break;
+      }
+    }//end of while
+   if(flag==0)
+
+   { cout<<"roll number not found \n";
+     delay(4000);
+   }
+   f18.close();
+   clrscr();
+    cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that performs operations "<<endl<<" Any other key to exit \n";
+    cin>>num;
+    if(num==1)
+    { clrscr();
+     goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto z;
+    }
+    else
+    break;
+
+  }//end of x case
+ case 'y':
+ { clrscr();
+  char name[100];
+  int flag=0;
+  cout<<"enter the name to be compared with all other names \n";
+  gets(name);
+  ofstream f9;ifstream f19;
+  f19.open("kanna.txt",ios::in);
+       while(!f19.eof())
+     {   f19.read((char*)&a,sizeof(a));
+	 if(strcmp(a.NAME4(),name)==0)
+       {
+	   cout<<"name found \n";
+	   flag=1;
+	   delay(4000);
+	   break;
+	}
+     }//end of while
+  if(flag==0)
+  { cout<< " name not found \n";
+    delay(4000);
+  }
+  f19.close();
+  clrscr();
+    cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that performs operations like searching "<<endl<<" Any other key to exit \n";
+    cin>>num;;
+    if(num==1)
+    { clrscr();
+     goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto z;
+    }
+    else
+    break;
+
+
+ }//end of case y
+
+ case 'z':
+
+ { int choice;
+ a:  cout<<" Choose from the list to perform the desired operation to modify  "<<endl<<"1. Address "<<endl<<"2. Phone number "<<endl<<"3. Class "<<endl<<"4. Section "<<endl;
+   cin>>choice;
+   switch(choice)
+   {
+   case 1:
+   { clrscr();
+     int rolling;
+     fstream f90,f91;
+     f90.open("kanna.txt",ios::in );
+     f91.open("kanna1.txt",ios::app);
+   cout<<"enter the roll number of the record to be modified\n";
+   cin>>rolling;
+   while(f90.read((char*)&a,sizeof(a)))
+  {
+   if(a.roll1()==rolling)
+   {
+      a.ADDRESS1();
+   }
+     f91.write((char*)&a,sizeof(a));
+  }
+  f90.close();
+  f91.close();
+  remove("kanna.txt");
+  rename("kanna1.txt","kanna.txt");
+    clrscr();
+    cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that performs operations like searching "<<endl<<" 3. to present the menu that requests you to enter the new modified details of te student "<<endl<< " Any other key to exit \n";
+    cin>>num;;
+    if(num==1)
+    { clrscr();
+     goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto z;
+    }
+    else
+    if(num==3)
+    { clrscr();
+      goto a;
+    }
+    else
+    break;
+
+   } //end of 1 case
+ case 2:
+{    clrscr();
+     int rolling;
+     fstream f92,f93;
+     f92.open("kanna.txt",ios::in );
+     f93.open("kanna1.txt",ios::app);
+     cout<<"enter the roll number of the record to be modified\n";
+     cin>>rolling;
+   while(f92.read((char*)&a,sizeof(a)))
+  {
+   if(a.roll1()==rolling)
+   {
+      a.PHONENO1();
+   }
+     f93.write((char*)&a,sizeof(a));
+  }
+  f92.close();
+  f93.close();
+  remove("kanna.txt");
+  rename("kanna1.txt","kanna.txt");
+  clrscr();
+    cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that performs operations "<<endl<<" 3. to present the menu that requests you to enter the new modified details of te student "<<endl<< " Any other key to exit \n";
+    cin>>num;;
+    if(num==1)
+    { clrscr();
+     goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto z;
+    }
+    else
+    if(num==3)
+    { clrscr();
+      goto a;
+    }
+    else
+    break;
+
+   }//end of case 2
+   case 3:
+ {   clrscr();
+     int rolling;
+     fstream f94,f95;
+     f94.open("kanna.txt",ios::in );
+     f95.open("kanna1.txt",ios::app);
+     cout<<"enter the roll number of the record to be modified\n";
+     cin>>rolling;
+   while(f94.read((char*)&a,sizeof(a)))
+  {
+   if(a.roll1()==rolling)
+   {
+      a.CLASS1();
+   }
+     f95.write((char*)&a,sizeof(a));
+  }
+  f94.close();
+  f95.close();
+  remove("kanna.txt");
+  rename("kanna1.txt","kanna.txt");
+  clrscr();
+   clrscr();
+    cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that performs operations "<<endl<<" 3. to present the menu that requests you to enter the new modified details of te student "<<endl<< " Any other key to exit \n";
+    cin>>num;;
+    if(num==1)
+    { clrscr();
+     goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto z;
+    }
+    else
+    if(num==3)
+    { clrscr();
+      goto a;
+    }
+    else
+    break;
+  } //end of case 3
+  case 4:
+   {  clrscr();
+     int rolling;
+     fstream f96,f97;
+     f96.open("kanna.txt",ios::in );
+     f97.open("kanna1.txt",ios::app);
+   cout<<"enter the roll number of the record to be modified\n";
+   cin>>rolling;
+   while(f96.read((char*)&a,sizeof(a)))
+  {
+   if(a.roll1()==rolling)
+   {
+      a.SECTION1();
+   }
+     f97.write((char*)&a,sizeof(a));
+  }
+  f96.close();
+  f97.close();
+  remove("kanna.txt");
+  rename("kanna1.txt","kanna.txt");
+  clrscr();
+    cout<<" Press "<<endl<<" 1. to go back to the foremost menu "<<endl<<" 2. to go back to the menu that performs operations "<<endl<<" 3. to present the menu that requests you to enter the new modified details of te student "<<endl<< " Any other key to exit \n";
+    cin>>num;;
+    if(num==1)
+    { clrscr();
+     goto f;
+
+    }
+    else
+    if(num==2)
+    { clrscr();
+      goto z;
+    }
+    else
+    if(num==3)
+    { clrscr();
+      goto a;
+    }
+    else
+    break;
+
+  }//end of case 4
+  }//end of kutti switch
+  }//end of case "z"
+  }//end of cho
+  break;
+}  //end of if
+else
+cout<<" sorry try again later \n";
+break;
+ }  //end of case 2
+  case 9:
+{ clrscr();
+  int q;
+  q=wordpass();
+  if(q==1)
+{  char choice;
+  p: cout<<" Press "<<endl<<" A. Details of the staff based on the date of joining"<<endl<<" B. details of the students based on the class "<<endl<<" C. details of the students based on the marks "<<endl<<" Any other key to exit \n";
+  cout<<" Enter  the choice that would enable you to view the required report \n";
+  cin>>choice;
+  switch(choice)
+ { case 'A':
+     { clrscr();
+      a.datesort();
+      int num;
+       delay(10000);
+       clrscr();
+       cout<<" Press "<<endl<<" 1. to go the foremost menu "<<endl<<" 2. to go back to the menu that suggests you about report generation  "<<endl<<"  Any other key to exit "<<endl;
+       cin>>num;
+       if(num==1)
+       {
+	 clrscr();
+	 goto f;
+	}
+	else
+	if(num==2)
+       { clrscr();
+	 goto p;
+	}
+	else
+	break;
+
+
+     }//end of case A
+
+   case 'B':
+  {    clrscr();
+       a.output();
+	delay(10000);
+       int num;
+       clrscr();
+       cout<<" Press "<<endl<<" 1. to go the foremost menu "<<endl<<" 2. to go back to the menu that suggests you about report generation  "<<endl<<"  Any other key to exit "<<endl;
+       cin>>num;
+       if(num==1)
+       {
+	 clrscr();
+	 goto f;
+	}
+	else
+	if(num==2)
+       { clrscr();
+	 goto p;
+	}
+	else
+	break;
+	}// end of case B
+	case 'C':
+	{ clrscr();
+      cout<<" 1. to display the details of the students who have got more than 50 : "<<endl;
+      cout<<" 2. to display the details of the students who have got less than 50 :   "<<endl;
+      cin>>num;
+      if(num==1)
+      {a.throughput();}
+      else
+      if(num==2)
+      { a.input(); }
+       delay(10000);
+       clrscr();
+       cout<<" Press "<<endl<<" 1. to go the foremost menu "<<endl<<" 2. to go back to the menu that suggests you about report generation  "<<endl<<"  Any other key to exit "<<endl;
+       cin>>num;
+
+       if(num==1)
+       {
+	 clrscr();
+	 goto f;
+	}
+	else
+	if(num==2)
+       { clrscr();
+	 goto p;
+	}
+	else
+	break;
+
+    } //end of case C
+
+	} //end of switch
+       }//end of if
+       else
+       cout<<" sorry try gain later \n";
+       break;
+     }  //end of case 9
+    }
+getch();
+}
+
