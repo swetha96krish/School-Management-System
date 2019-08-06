@@ -1,2 +1,8 @@
 # School-Management-System
-Manages Student details and bridges the gap between parents and teacher.
+	Managing Students details:
+	      There are two types of users: Administrative and Staff registers.
+	     Managing Staff register :
+•	Adding the details of the staffs
+•	Searching of details
+•	Modification of details
+•	Insertion of details    
